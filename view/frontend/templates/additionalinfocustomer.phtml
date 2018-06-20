@@ -1,0 +1,43 @@
+<?php
+    $infoCustomer = 'form_additional_info_customer_edit';
+    $blockName = $this->getNameInLayout();
+?>
+<div class="field legal-type required">
+    <label class="label" for="legal-type"><span><?= /* @escapeNotVerified */ __('Customer Legal Type') ?></span></label>
+    <div class="control">
+        <select name="legal_type" id="legal-type" class="select">
+            <option value="1"><?= /* @escapeNotVerified */ __('Physical Person') ?></option>
+            <option value="2"><?= /* @escapeNotVerified */ __('Legal Person') ?></option>
+        </select>
+    </div>
+</div>
+<?php $_taxvat = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Taxvat') ?>
+<?php if ($_taxvat->isEnabled()): ?>
+    <?php if($infoCustomer == $blockName): ?>
+    <?= $_taxvat->setTaxvat($block->getCustomer()->getTaxvat())->toHtml() ?>
+    <?php else : ?>
+    <?= $_taxvat->setTaxvat($block->getFormData()->getTaxvat())->toHtml() ?>
+    <?php endif ?>
+<?php endif ?>
+<div class="field state-inscription">
+    <label for="state_inscription" class="label"><span><?= /* @escapeNotVerified */ __('State Inscription') ?></span></label>
+    <div class="control">
+        <input type="text" name="state_inscription" title="<?= /* @escapeNotVerified */ __('State Inscription') ?>" id="state-inscription" class="input-text" data-validate="{required:false}" autocomplete="off">
+    </div>
+</div>
+<div class="field county-inscription">
+    <label for="county_inscription" class="label"><span><?= /* @escapeNotVerified */ __('County Inscription') ?></span></label>
+    <div class="control">
+        <input type="text" name="county_inscription" title="<?= /* @escapeNotVerified */ __('County Inscription') ?>" id="county-inscription" class="input-text" data-validate="{required:false}" autocomplete="off">
+    </div>
+</div>
+<script type="text/javascript">
+require([
+    'jquery',
+    'brcustomer',
+    'pessoaFisica',
+    "pessoaJuridica",
+    'domReady!'
+], function($){
+});
+</script>

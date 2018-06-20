@@ -1,0 +1,24 @@
+{
+    "name": "techspot/brcustomer",
+    "description": "The Tech Spot Module - BRCustomer for Magento 2 enables the registration of PF (Individuals) and PJ (Legal Entity) clients in the customer register of their Magento application.",
+    "type": "magento2-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "email": "bruno@techspot.com.br",
+            "name": "Bruno Monteiro"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "~5.6.0|~7.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Techspot\\Brcustomer\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}
