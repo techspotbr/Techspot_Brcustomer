@@ -9,8 +9,10 @@ Installe via composer:
 
 ```
 cd <your Magento install dir>
-composer require Techspot_Brcustomer
+composer require techspot/brcustomer
 php bin/magento module:enable --clear-static-content Techspot_Brcustomer
+php bin/magento setup:upgrade
+php bin/magento setup:di:compile
 php bin/magento setup:static-content:deploy //ou php bin/magento setup:static-content:deploy pt_BR
 ```
 
