@@ -1,0 +1,19 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Techspot\Brcustomer\Block\Widget\Legaltype $block */
+?>
+<div class="field legal-type<?php if ($block->isRequired()) echo ' required'; ?>">
+    <label class="label" for="<?= $block->escapeHtmlAttr($block->getFieldId('legal-type')) ?>"><span><?= $block->escapeHtml(__('Customer Legal Type')) ?></span></label>
+    <div class="control">
+        <select name="legal_type" id="<?= $block->escapeHtmlAttr($block->getFieldId('legal-type')) ?>" class="select">
+            <option value="1"><?= /* @escapeNotVerified */ __('Physical Person') ?></option>
+            <option value="2"><?= /* @escapeNotVerified */ __('Legal Person') ?></option>
+        </select>
+    </div>
+</div>

@@ -21,12 +21,52 @@
 
 namespace Techspot\Brcustomer\Setup;
 
+use Magento\Customer\Model\Customer;
+use Magento\Framework\Indexer\IndexerRegistry;
 use Magento\Framework\Setup\UpgradeDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 
 class UpgradeData implements UpgradeDataInterface
 {
+
+    /**
+     * Customer setup factory
+     *
+     * @var CustomerSetupFactory
+     */
+    private $customerSetupFactory;
+
+    /**
+     * @var IndexerRegistry
+     */
+    protected $indexerRegistry;
+
+    /**
+     * @var \Magento\Eav\Model\Config
+     */
+    protected $eavConfig;
+
+    /**
+     * Constructor
+     *
+     * @param \Magento\Customer\Setup\CustomerSetupFactory $customerSetupFactory
+     */
+
+    /**
+     * @param CustomerSetupFactory $customerSetupFactory
+     * @param IndexerRegistry $indexerRegistry
+     * @param \Magento\Eav\Model\Config $eavConfig
+     */
+    public function __construct(
+        \Magento\Customer\Setup\CustomerSetupFactory $customerSetupFactory,
+        IndexerRegistry $indexerRegistry,
+        \Magento\Eav\Model\Config $eavConfig
+    ) {
+        $this->customerSetupFactory = $customerSetupFactory;
+        $this->indexerRegistry = $indexerRegistry;
+        $this->eavConfig = $eavConfig;
+    }
 
     /**
      * {@inheritdoc}
@@ -36,9 +76,50 @@ class UpgradeData implements UpgradeDataInterface
         ModuleContextInterface $context
     ) {
         $setup->startSetup();
-        if (version_compare($context->getVersion(), "1.0.0", "<")) {
-            //Your upgrade script
+
+        /** @var CustomerSetup $customerSetup */
+        $customerSetup = $this->customerSetupFactory->create(['setup' => $setup]);
+
+        if (version_compare($context->getVersion(), "1.0.1", "<")) {
+            $this->upgradeVersionOneZeroOne($customerSetup);
         }
+
+        $indexer = $this->indexerRegistry->get(Customer::CUSTOMER_GRID_INDEXER_ID);
+        $indexer->reindexAll();
+        $this->eavConfig->clear();
+
         $setup->endSetup();
     }
+
+    /**
+     * @param CustomerSetup $customerSetup
+     * @return void
+     */
+    private function upgradeVersionOneZeroOne($customerSetup)
+    {
+        $customerSetup->addAttribute(\Magento\Customer\Model\Customer::ENTITY, 'document', [
+            'type' => 'varchar',
+            'label' => 'Document ID',
+            'input' => 'text',
+            'source' => '',
+            'required' => false,
+            'visible' => false,
+            'position' => 336,
+            'system' => false,
+            'backend' => ''
+        ]);
+
+        $customerSetup->addAttribute(\Magento\Customer\Model\Customer::ENTITY, 'document_emitter', [
+            'type' => 'varchar',
+            'label' => 'Document ID Emitter',
+            'input' => 'text',
+            'source' => '',
+            'required' => false,
+            'visible' => false,
+            'position' => 337,
+            'system' => false,
+            'backend' => ''
+        ]);
+    }
+
 }

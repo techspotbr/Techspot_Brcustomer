@@ -1,0 +1,16 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Techspot\Brcustomer\Block\Widget\Stateinscription $block */
+?>
+<div class="field state-inscription<?php if ($block->isRequired()) echo ' required'; ?>">
+    <label class="label" for="<?= $block->escapeHtmlAttr($block->getFieldId('state_inscription')) ?>"><span><?= $block->escapeHtml(__('State Inscription')) ?></span></label>
+    <div class="control">
+        <input type="text" id="<?= $block->escapeHtmlAttr($block->getFieldId('state_inscription')) ?>" name="<?= $block->escapeHtmlAttr($block->getFieldName('state_inscription')) ?>" value="<?= $block->escapeHtmlAttr($block->getRg()) ?>" title="<?= $block->escapeHtmlAttr(__('State Inscription')) ?>" class="input-text <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('state_inscription')) ?>" <?php if ($block->isRequired()) echo ' data-validate="{required:true}"' ?>>
+    </div>
+</div>
