@@ -1,0 +1,16 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Techspot\Brcustomer\Block\Widget\Documentemitter $block */
+?>
+<div class="field document_emitter<?php if ($block->isRequired()) echo ' required'; ?>">
+    <label class="label" for="<?= $block->escapeHtmlAttr($block->getFieldId('document_emitter')) ?>"><span><?= $block->escapeHtml(__('Document ID Emitter')) ?></span></label>
+    <div class="control">
+        <input type="text" id="<?= $block->escapeHtmlAttr($block->getFieldId('document_emitter')) ?>" name="<?= $block->escapeHtmlAttr($block->getFieldName('document_emitter')) ?>" value="<?= $block->escapeHtmlAttr($block->getRg()) ?>" title="<?= $block->escapeHtmlAttr(__('Document ID Emitter')) ?>" class="input-text <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('document_emitter')) ?>" <?php if ($block->isRequired()) echo ' data-validate="{required:true}"' ?>>
+    </div>
+</div>
