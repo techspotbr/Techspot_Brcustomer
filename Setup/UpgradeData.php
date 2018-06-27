@@ -84,6 +84,10 @@ class UpgradeData implements UpgradeDataInterface
             $this->upgradeVersionOneZeroOne($customerSetup);
         }
 
+        if (version_compare($context->getVersion(), "1.0.2", "<")) {
+            $this->upgradeVersionOneZeroTwo($customerSetup);
+        }
+
         $indexer = $this->indexerRegistry->get(Customer::CUSTOMER_GRID_INDEXER_ID);
         $indexer->reindexAll();
         $this->eavConfig->clear();
@@ -120,6 +124,42 @@ class UpgradeData implements UpgradeDataInterface
             'system' => false,
             'backend' => ''
         ]);
+    }
+
+    /**
+     * @param CustomerSetup $customerSetup
+     * @return void
+     */
+    private function upgradeVersionOneZeroTwo($customerSetup)
+    {
+        $attribute = $customerSetup->getEavConfig()->getAttribute('customer', 'legal_type')
+            ->addData([
+                'is_used_in_grid' => true,
+                'is_visible_in_grid' => true,
+                'is_filterable_in_grid' => true,
+                'is_searchable_in_grid' => true
+            ]);
+        $attribute->save();
+
+        $attribute = $customerSetup->getEavConfig()->getAttribute('customer', 'document')
+            ->addData(['used_in_forms' => [
+                'adminhtml_customer',
+                'adminhtml_checkout',
+                'customer_account_create',
+                'customer_account_edit'
+                ]
+            ]);
+        $attribute->save();
+
+        $attribute = $customerSetup->getEavConfig()->getAttribute('customer', 'document_emitter')
+            ->addData(['used_in_forms' => [
+                'adminhtml_customer',
+                'adminhtml_checkout',
+                'customer_account_create',
+                'customer_account_edit'
+                ]
+            ]);
+        $attribute->save();
     }
 
 }
