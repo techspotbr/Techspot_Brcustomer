@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Indexer/etc/indexer.xsd">
+<indexer id="customer_grid" view_id="legal_type" class="Magento\Framework\Indexer\Action\Entity" primary="customer">
+    <fieldset name="customer" source="Magento\Customer\Model\ResourceModel\Customer\Collection" provider="Magento\Customer\Model\Indexer\AttributeProvider">
+        <field name="legal_type" xsi:type="filterable" dataType="int"/>
+    </fieldset>
+</indexer>
+</config>
