@@ -10,7 +10,7 @@ require(['jquery','pessoaFisica','pessoaJuridica'], function($, pessoaFisica, pe
                 pJuridica : '2',
             };
 
-            $('#legal-type').on('change',function(){
+            $('#legal_type').on('change',function(){
                 var ltSelected = $(this).val();
 
                 if(ltSelected == customerType.pFisica){

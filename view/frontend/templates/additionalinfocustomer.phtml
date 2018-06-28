@@ -1,16 +1,17 @@
 <?php
     $infoCustomer = 'form_additional_info_customer_edit';
     $blockName = $this->getNameInLayout();
-    
+
     if($infoCustomer == $blockName){
         $blockData = $block->getCustomer();
     } else {
         $blockData = $block->getFormData();
     }
 ?>
+
 <?php $_legalType = $block->getLayout()->createBlock('Techspot\Brcustomer\Block\Widget\Legaltype') ?>
 <?php if ($_legalType->isEnabled()): ?>
-    <?= $_legalType->setTaxvat($blockData->getLegalType())->toHtml() ?>
+    <?= $_legalType->setLegalType($_legalType->getCustomAttribute($this, $block, 'legal_type'))->toHtml() ?>
 <?php endif ?>
 
 <?php $_taxvat = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Taxvat') ?>
@@ -20,22 +21,22 @@
 
 <?php $_document = $block->getLayout()->createBlock('Techspot\Brcustomer\Block\Widget\Document') ?>
 <?php if ($_document->isEnabled()): ?>
-    <?= $_document->setTaxvat($blockData->getDocument())->toHtml() ?>
+    <?= $_document->setDocument($_document->getCustomAttribute($this, $block, 'document'))->toHtml() ?>
 <?php endif ?>
 
 <?php $_documentEmitter = $block->getLayout()->createBlock('Techspot\Brcustomer\Block\Widget\Documentemitter') ?>
 <?php if ($_documentEmitter->isEnabled()): ?>
-    <?= $_documentEmitter->setTaxvat($blockData->getDocumentEmitter())->toHtml() ?>
+    <?= $_documentEmitter->setDocumentEmitter($_documentEmitter->getCustomAttribute($this, $block, 'document_emitter'))->toHtml() ?>
 <?php endif ?>
 
 <?php $_stateInscription = $block->getLayout()->createBlock('Techspot\Brcustomer\Block\Widget\Stateinscription') ?>
 <?php if ($_stateInscription->isEnabled()): ?>
-    <?= $_stateInscription->setTaxvat($blockData->getStateInscription())->toHtml() ?>
+    <?= $_stateInscription->setStateInscription($_stateInscription->getCustomAttribute($this, $block, 'state_inscription'))->toHtml() ?>
 <?php endif ?>
 
 <?php $_countyInscription = $block->getLayout()->createBlock('Techspot\Brcustomer\Block\Widget\Countyinscription') ?>
 <?php if ($_countyInscription->isEnabled()): ?>
-    <?= $_countyInscription->setTaxvat($blockData->getCountyInscription())->toHtml() ?>
+    <?= $_countyInscription->setCountyInscription($_countyInscription->getCustomAttribute($this, $block, 'county_inscription'))->toHtml() ?>
 <?php endif ?>
 
 <script type="text/javascript">

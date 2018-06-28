@@ -28,8 +28,8 @@ use Magento\Customer\Api\CustomerMetadataInterface;
  *
  * @SuppressWarnings(PHPMD.DepthOfInheritance)
  */
-class Document extends \Magento\Customer\Block\Widget\AbstractWidget
-{
+class Document extends AbstractWidget
+{   
     /**
      * Constructor.
      *

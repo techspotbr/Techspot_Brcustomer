@@ -11,6 +11,6 @@
 <div class="field document<?php if ($block->isRequired()) echo ' required'; ?>">
     <label class="label" for="<?= $block->escapeHtmlAttr($block->getFieldId('document')) ?>"><span><?= $block->escapeHtml(__('Document ID')) ?></span></label>
     <div class="control">
-        <input type="text" id="<?= $block->escapeHtmlAttr($block->getFieldId('document')) ?>" name="<?= $block->escapeHtmlAttr($block->getFieldName('document')) ?>" value="<?= $block->escapeHtmlAttr($block->getRg()) ?>" title="<?= $block->escapeHtmlAttr(__('Document ID')) ?>" class="input-text <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('document')) ?>" <?php if ($block->isRequired()) echo ' data-validate="{required:true}"' ?>>
+        <input type="text" id="<?= $block->escapeHtmlAttr($block->getFieldId('document')) ?>" name="<?= $block->escapeHtmlAttr($block->getFieldName('document')) ?>" value="<?= $block->escapeHtmlAttr($block->getDocument()) ?>" title="<?= $block->escapeHtmlAttr(__('Document ID')) ?>" class="input-text <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('document')) ?>" <?php if ($block->isRequired()) echo ' data-validate="{required:true}"' ?>>
     </div>
 </div>

@@ -15,11 +15,11 @@ define(['jquery'], function($) {
         $('.field.company ').show();
 
         // Field state_inscription
-        $('#state-inscription').prop('disabled', false);
+        $('#state_inscription').prop('disabled', false);
         $('.field.state-inscription').show();
 
         // Field county inscription
-        $('#county-inscription').prop('disabled', false);
+        $('#county_inscription').prop('disabled', false);
         $('.field.county-inscription').show();
 
         // Change Taxvat label
