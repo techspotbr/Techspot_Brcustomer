@@ -28,8 +28,8 @@ use Magento\Customer\Api\CustomerMetadataInterface;
  *
  * @SuppressWarnings(PHPMD.DepthOfInheritance)
  */
-class Documentemitter extends \Magento\Customer\Block\Widget\AbstractWidget
-{
+class Documentemitter extends AbstractWidget
+{    
     /**
      * Constructor.
      *
@@ -78,4 +78,5 @@ class Documentemitter extends \Magento\Customer\Block\Widget\AbstractWidget
     {
         return $this->_getAttribute('document_emitter') ? (bool)$this->_getAttribute('document_emitter')->isRequired() : false;
     }
+
 }

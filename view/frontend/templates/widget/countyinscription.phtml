@@ -11,6 +11,6 @@
 <div class="field county-inscription<?php if ($block->isRequired()) echo ' required'; ?>">
     <label class="label" for="<?= $block->escapeHtmlAttr($block->getFieldId('county_inscription')) ?>"><span><?= $block->escapeHtml(__('County Inscription')) ?></span></label>
     <div class="control">
-        <input type="text" id="<?= $block->escapeHtmlAttr($block->getFieldId('county_inscription')) ?>" name="<?= $block->escapeHtmlAttr($block->getFieldName('county_inscription')) ?>" value="<?= $block->escapeHtmlAttr($block->getRg()) ?>" title="<?= $block->escapeHtmlAttr(__('County Inscription')) ?>" class="input-text <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('county_inscription')) ?>" <?php if ($block->isRequired()) echo ' data-validate="{required:true}"' ?>>
+        <input type="text" id="<?= $block->escapeHtmlAttr($block->getFieldId('county_inscription')) ?>" name="<?= $block->escapeHtmlAttr($block->getFieldName('county_inscription')) ?>" value="<?= $block->escapeHtmlAttr($block->getCountyInscription()) ?>" title="<?= $block->escapeHtmlAttr(__('County Inscription')) ?>" class="input-text <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('county_inscription')) ?>" <?php if ($block->isRequired()) echo ' data-validate="{required:true}"' ?>>
     </div>
 </div>

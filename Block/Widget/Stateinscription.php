@@ -28,8 +28,9 @@ use Magento\Customer\Api\CustomerMetadataInterface;
  *
  * @SuppressWarnings(PHPMD.DepthOfInheritance)
  */
-class Stateinscription extends \Magento\Customer\Block\Widget\AbstractWidget
+class Stateinscription extends AbstractWidget
 {
+    
     /**
      * Constructor.
      *

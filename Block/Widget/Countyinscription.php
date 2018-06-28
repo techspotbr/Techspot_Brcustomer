@@ -28,8 +28,8 @@ use Magento\Customer\Api\CustomerMetadataInterface;
  *
  * @SuppressWarnings(PHPMD.DepthOfInheritance)
  */
-class Countyinscription extends \Magento\Customer\Block\Widget\AbstractWidget
-{
+class Countyinscription extends AbstractWidget
+{   
     /**
      * Constructor.
      *

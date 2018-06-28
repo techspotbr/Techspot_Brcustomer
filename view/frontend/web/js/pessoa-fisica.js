@@ -15,11 +15,11 @@ define(['jquery'], function($) {
         
         // Field state_inscription
         $('.field.state-inscription').hide();
-        $('#state-inscription').prop('disabled', true);
+        $('#state_inscription').prop('disabled', true);
 
         // Field county inscription
         $('.field.county-inscription').hide();
-        $('#county-inscription').prop('disabled', true);
+        $('#county_inscription').prop('disabled', true);
 
         // Change Taxvat label
         $('label[for="taxvat"] span').html('CPF');   
