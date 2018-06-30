@@ -1,4 +1,4 @@
-define(['jquery'], function($) {
+define(['jquery', 'inputMask'], function($, inputmask) {
     'use strict';
     return function(){
         // Field company
@@ -7,6 +7,7 @@ define(['jquery'], function($) {
 
         // Field document
         $('#document').prop('disabled', false);
+        
         $('.field.document').show();
 
         // Field document_emitter
@@ -22,6 +23,7 @@ define(['jquery'], function($) {
         $('#county_inscription').prop('disabled', true);
 
         // Change Taxvat label
+        $('#taxvat').inputmask("999.999.999-99");
         $('label[for="taxvat"] span').html('CPF');   
     };
 });
