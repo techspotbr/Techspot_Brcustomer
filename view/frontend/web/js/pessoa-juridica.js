@@ -23,6 +23,7 @@ define(['jquery'], function($) {
         $('.field.county-inscription').show();
 
         // Change Taxvat label
+        $('#taxvat').inputmask("99.999.999/9999-99");
         $('label[for="taxvat"] span').html('CNPJ');
     };
 });
