@@ -40,6 +40,21 @@
         </referenceContainer>
         <referenceContainer name="form.additional.info">
             <block class="Magento\Customer\Block\Form\Register" name="form_additional_info_customer" template="Techspot_Brcustomer::additionalinfocustomer.phtml"/>
+            <block class="MSP\ReCaptcha\Block\Frontend\ReCaptcha" name="msp-recaptcha" after="-"
+                   template="MSP_ReCaptcha::msp_recaptcha.phtml"
+                   ifconfig="msp_securitysuite_recaptcha/frontend/enabled_create">
+
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="msp-recaptcha" xsi:type="array">
+                                <item name="component" xsi:type="string">MSP_ReCaptcha/js/reCaptcha</item>
+                                <item name="zone" xsi:type="string">create</item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
         </referenceContainer>
     </body>
 </page>
