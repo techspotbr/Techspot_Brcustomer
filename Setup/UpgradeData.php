@@ -170,7 +170,7 @@ class UpgradeData implements UpgradeDataInterface
      * @param CustomerSetup $customerSetup
      * @return void
      */
-    private function upgradeVersionOneZeroTwo($customerSetup)
+    private function upgradeVersionOneZeroTree($customerSetup)
     {
         $customerSetup->addAttribute('customer_address', 'cellphone', [
             'type' => 'varchar',
