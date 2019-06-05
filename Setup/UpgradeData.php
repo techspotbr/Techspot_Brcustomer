@@ -182,6 +182,9 @@ class UpgradeData implements UpgradeDataInterface
             'sort_order' => 1000,
             'position' => 1000,
             'system' => 0,
+            'group'=> 'General',
+            'visible_on_front' => 1,
+            'global' => 1,
         ]);
 
         $indexer = $this->indexerRegistry->get(Customer::CUSTOMER_GRID_INDEXER_ID);

@@ -1,0 +1,11 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Api/etc/extension_attributes.xsd">
+  <extension_attributes for="Magento\Quote\Api\Data\AddressInterface">
+    <attribute code="cellphone" type="string" />
+  </extension_attributes>
+  <extension_attributes for="Magento\Sales\Api\Data\OrderAddressInterface">
+      <attribute code="cellphone" type="string" />
+  </extension_attributes>
+  <extension_attributes for="Magento\Customer\Api\Data\AddressInterface">
+      <attribute code="cellphone" type="string" />
+  </extension_attributes>
+</config>
