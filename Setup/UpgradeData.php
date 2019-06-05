@@ -88,6 +88,10 @@ class UpgradeData implements UpgradeDataInterface
             $this->upgradeVersionOneZeroTwo($customerSetup);
         }
 
+        if (version_compare($context->getVersion(), "1.0.3", "<")) {
+            $this->upgradeVersionOneZeroTree($customerSetup);
+        }
+
         $indexer = $this->indexerRegistry->get(Customer::CUSTOMER_GRID_INDEXER_ID);
         $indexer->reindexAll();
         $this->eavConfig->clear();
@@ -159,6 +163,36 @@ class UpgradeData implements UpgradeDataInterface
                 'customer_account_edit'
                 ]
             ]);
+        $attribute->save();
+    }
+
+    /**
+     * @param CustomerSetup $customerSetup
+     * @return void
+     */
+    private function upgradeVersionOneZeroTwo($customerSetup)
+    {
+        $customerSetup->addAttribute('customer_address', 'cellphone', [
+            'type' => 'varchar',
+            'label' => 'Cell phone',
+            'input' => 'text',
+            'required' => false,
+            'visible' => true,
+            'user_defined' => true,
+            'sort_order' => 1000,
+            'position' => 1000,
+            'system' => 0,
+        ]);
+
+        $indexer = $this->indexerRegistry->get(Customer::CUSTOMER_GRID_INDEXER_ID);
+        $indexer->reindexAll();
+        $this->eavConfig->clear();
+
+        $attribute = $customerSetup->getEavConfig()->getAttribute('customer_address', 'cellphone')
+            ->addData([
+                'used_in_forms' => ['adminhtml_customer_address', 'customer_address_edit', 'customer_register_address'],
+            ]);
+
         $attribute->save();
     }
 
