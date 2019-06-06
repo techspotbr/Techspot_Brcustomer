@@ -92,6 +92,10 @@ class UpgradeData implements UpgradeDataInterface
             $this->upgradeVersionOneZeroTree($customerSetup);
         }
 
+        if (version_compare($context->getVersion(), "1.0.4", "<")) {
+            $this->upgradeVersionOneZeroFour($customerSetup);
+        }
+
         $indexer = $this->indexerRegistry->get(Customer::CUSTOMER_GRID_INDEXER_ID);
         $indexer->reindexAll();
         $this->eavConfig->clear();
@@ -194,6 +198,61 @@ class UpgradeData implements UpgradeDataInterface
         $attribute = $customerSetup->getEavConfig()->getAttribute('customer_address', 'cellphone')
             ->addData([
                 'used_in_forms' => ['adminhtml_customer_address', 'customer_address_edit', 'customer_register_address'],
+            ]);
+
+        $attribute->save();
+    }
+
+     /**
+     * @param CustomerSetup $customerSetup
+     * @return void
+     */
+    private function upgradeVersionOneZeroFour($customerSetup)
+    {
+        $customerSetup->addAttribute('customer', 'cellphone', [
+             'type' => 'varchar',
+            'label' => 'Cell phone',
+            'input' => 'text',
+            'source' => '',
+            'required' => false,
+            'visible' => false,
+            'position' => 336,
+            'system' => false,
+            'backend' => ''
+        ]);
+
+        $customerSetup->addAttribute('customer', 'telephone', [
+             'type' => 'varchar',
+            'label' => 'Telephone',
+            'input' => 'text',
+            'source' => '',
+            'required' => false,
+            'visible' => false,
+            'position' => 336,
+            'system' => false,
+            'backend' => ''
+        ]);
+
+        $indexer = $this->indexerRegistry->get(Customer::CUSTOMER_GRID_INDEXER_ID);
+        $indexer->reindexAll();
+        $this->eavConfig->clear();
+
+        $attribute = $customerSetup->getEavConfig()->getAttribute('customer', 'cellphone')
+             ->addData([
+                'is_used_in_grid' => true,
+                'is_visible_in_grid' => true,
+                'is_filterable_in_grid' => true,
+                'is_searchable_in_grid' => true
+            ]);
+
+        $attribute->save();
+
+        $attribute = $customerSetup->getEavConfig()->getAttribute('customer', 'telephone')
+             ->addData([
+                'is_used_in_grid' => true,
+                'is_visible_in_grid' => true,
+                'is_filterable_in_grid' => true,
+                'is_searchable_in_grid' => true
             ]);
 
         $attribute->save();
