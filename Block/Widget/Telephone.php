@@ -66,7 +66,7 @@ class Cellphone extends AbstractWidget
      */
     public function isEnabled()
     {
-        return $this->_getAttribute('cellphone') ? (bool)$this->_getAttribute('cellphone')->isVisible() : false;
+        return $this->_getAttribute('custom_cellphone') ? (bool)$this->_getAttribute('custom_cellphone')->isVisible() : false;
     }
 
     /**
@@ -76,6 +76,6 @@ class Cellphone extends AbstractWidget
      */
     public function isRequired()
     {
-        return $this->_getAttribute('cellphone') ? (bool)$this->_getAttribute('cellphone')->isRequired() : false;
+        return $this->_getAttribute('custom_cellphone') ? (bool)$this->_getAttribute('custom_cellphone')->isRequired() : false;
     }
 }
