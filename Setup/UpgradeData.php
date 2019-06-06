@@ -209,7 +209,7 @@ class UpgradeData implements UpgradeDataInterface
      */
     private function upgradeVersionOneZeroFour($customerSetup)
     {
-        $customerSetup->addAttribute('customer', 'cellphone', [
+        $customerSetup->addAttribute('customer', 'custom_cellphone', [
              'type' => 'varchar',
             'label' => 'Cell phone',
             'input' => 'text',
@@ -221,7 +221,7 @@ class UpgradeData implements UpgradeDataInterface
             'backend' => ''
         ]);
 
-        $customerSetup->addAttribute('customer', 'telephone', [
+        $customerSetup->addAttribute('customer', 'custom_telephone', [
              'type' => 'varchar',
             'label' => 'Telephone',
             'input' => 'text',
@@ -237,7 +237,7 @@ class UpgradeData implements UpgradeDataInterface
         $indexer->reindexAll();
         $this->eavConfig->clear();
 
-        $attribute = $customerSetup->getEavConfig()->getAttribute('customer', 'cellphone')
+        $attribute = $customerSetup->getEavConfig()->getAttribute('customer', 'custom_cellphone')
              ->addData([
                 'is_used_in_grid' => true,
                 'is_visible_in_grid' => true,
@@ -247,7 +247,7 @@ class UpgradeData implements UpgradeDataInterface
 
         $attribute->save();
 
-        $attribute = $customerSetup->getEavConfig()->getAttribute('customer', 'telephone')
+        $attribute = $customerSetup->getEavConfig()->getAttribute('customer', 'custom_telephone')
              ->addData([
                 'is_used_in_grid' => true,
                 'is_visible_in_grid' => true,

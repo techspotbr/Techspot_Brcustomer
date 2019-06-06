@@ -46,12 +46,12 @@
 
 <?php $_cellphone = $block->getLayout()->createBlock('Techspot\Brcustomer\Block\Widget\Cellphone') ?>
 <?php if ($_cellphone->isEnabled()): ?>
-    <?= $_cellphone->setCellphone($_cellphone->getCustomAttribute($this, $block, 'cellphone'))->toHtml() ?>
+    <?= $_cellphone->setCustomCellphone($_cellphone->getCustomAttribute($this, $block, 'custom_cellphone'))->toHtml() ?>
 <?php endif ?>
 
 <?php $_telephone = $block->getLayout()->createBlock('Techspot\Brcustomer\Block\Widget\Telephone') ?>
 <?php if ($_telephone->isEnabled()): ?>
-    <?= $_telephone->setTelephone($_telephone->getCustomAttribute($this, $block, 'telephone'))->toHtml() ?>
+    <?= $_telephone->setCustomTelephone($_telephone->getCustomAttribute($this, $block, 'custom_telephone'))->toHtml() ?>
 <?php endif ?>
 
 <script type="text/javascript">
