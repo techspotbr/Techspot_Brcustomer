@@ -39,6 +39,21 @@
     <?= $_countyInscription->setCountyInscription($_countyInscription->getCustomAttribute($this, $block, 'county_inscription'))->toHtml() ?>
 <?php endif ?>
 
+<?php $_stateInscription = $block->getLayout()->createBlock('Techspot\Brcustomer\Block\Widget\Stateinscription') ?>
+<?php if ($_stateInscription->isEnabled()): ?>
+    <?= $_stateInscription->setStateInscription($_stateInscription->getCustomAttribute($this, $block, 'state_inscription'))->toHtml() ?>
+<?php endif ?>
+
+<?php $_cellphone = $block->getLayout()->createBlock('Techspot\Brcustomer\Block\Widget\Cellphone') ?>
+<?php if ($_cellphone->isEnabled()): ?>
+    <?= $_cellphone->setCellphone($_cellphone->getCustomAttribute($this, $block, 'cellphone'))->toHtml() ?>
+<?php endif ?>
+
+<?php $_telephone = $block->getLayout()->createBlock('Techspot\Brcustomer\Block\Widget\Telephone') ?>
+<?php if ($_telephone->isEnabled()): ?>
+    <?= $_telephone->setTelephone($_telephone->getCustomAttribute($this, $block, 'telephone'))->toHtml() ?>
+<?php endif ?>
+
 <script type="text/javascript">
 require([
     'jquery',
