@@ -28,7 +28,7 @@ use Magento\Customer\Api\CustomerMetadataInterface;
  *
  * @SuppressWarnings(PHPMD.DepthOfInheritance)
  */
-class Cellphone extends AbstractWidget
+class Telephone extends AbstractWidget
 {   
     /**
      * Constructor.
