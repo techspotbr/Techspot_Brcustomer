@@ -9,8 +9,8 @@
 /** @var \Techspot\Brcustomer\Block\Widget\cellphone $block */
 ?>
 <div class="field cellphone<?php if ($block->isRequired()) echo ' required'; ?>">
-    <label class="label" for="<?= $block->escapeHtmlAttr($block->getFieldId('custom_cellphone')) ?>"><span><?= $block->escapeHtml(__('cellphone ID')) ?></span></label>
+    <label class="label" for="<?= $block->escapeHtmlAttr($block->getFieldId('custom_cellphone')) ?>"><span><?= $block->escapeHtml(__('Cellphone')) ?></span></label>
     <div class="control">
-        <input type="text" id="<?= $block->escapeHtmlAttr($block->getFieldId('custom_cellphone')) ?>" name="<?= $block->escapeHtmlAttr($block->getFieldName('custom_cellphone')) ?>" value="<?= $block->escapeHtmlAttr($block->getcellphone()) ?>" title="<?= $block->escapeHtmlAttr(__('cellphone ID')) ?>" class="input-text <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('custom_cellphone')) ?>" <?php if ($block->isRequired()) echo ' data-validate="{required:true}"' ?>>
+        <input type="text" id="<?= $block->escapeHtmlAttr($block->getFieldId('custom_cellphone')) ?>" name="<?= $block->escapeHtmlAttr($block->getFieldName('custom_cellphone')) ?>" value="<?= $block->escapeHtmlAttr($block->getcellphone()) ?>" title="<?= $block->escapeHtmlAttr(__('Cellphone')) ?>" class="input-text <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('custom_cellphone')) ?>" <?php if ($block->isRequired()) echo ' data-validate="{required:true}"' ?>>
     </div>
 </div>
