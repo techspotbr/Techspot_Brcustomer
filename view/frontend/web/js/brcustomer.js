@@ -1,4 +1,4 @@
-require(['jquery','pessoaFisica','pessoaJuridica'], function($, pessoaFisica, pessoaJuridica){
+require(['jquery', 'inputMask', 'pessoaFisica','pessoaJuridica'], function($, inputmask, pessoaFisica, pessoaJuridica){
     'use strict';
     
     $(document).ready(
@@ -9,6 +9,9 @@ require(['jquery','pessoaFisica','pessoaJuridica'], function($, pessoaFisica, pe
                 pFisica : '1',
                 pJuridica : '2',
             };
+
+            $('#custom_telephone').inputmask("(99) 9999-9999");
+            $('#custom_cellphone').inputmask("(99) 99999-9999");
 
             $('#legal_type').on('change',function(){
                 var ltSelected = $(this).val();
