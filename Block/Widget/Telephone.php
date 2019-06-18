@@ -56,7 +56,7 @@ class Telephone extends AbstractWidget
     public function _construct()
     {
         parent::_construct();
-        $this->setTemplate('widget/cellphone.phtml');
+        $this->setTemplate('widget/telephone.phtml');
     }
 
     /**
@@ -66,7 +66,7 @@ class Telephone extends AbstractWidget
      */
     public function isEnabled()
     {
-        return $this->_getAttribute('custom_cellphone') ? (bool)$this->_getAttribute('custom_cellphone')->isVisible() : false;
+        return $this->_getAttribute('custom_telephone') ? (bool)$this->_getAttribute('custom_telephone')->isVisible() : false;
     }
 
     /**
@@ -76,6 +76,6 @@ class Telephone extends AbstractWidget
      */
     public function isRequired()
     {
-        return $this->_getAttribute('custom_cellphone') ? (bool)$this->_getAttribute('custom_cellphone')->isRequired() : false;
+        return $this->_getAttribute('custom_telephone') ? (bool)$this->_getAttribute('custom_telephone')->isRequired() : false;
     }
 }
