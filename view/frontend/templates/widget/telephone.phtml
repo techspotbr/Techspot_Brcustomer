@@ -11,6 +11,6 @@
 <div class="field telephone<?php if ($block->isRequired()) echo ' required'; ?>">
     <label class="label" for="<?= $block->escapeHtmlAttr($block->getFieldId('custom_telephone')) ?>"><span><?= $block->escapeHtml(__('Telephone')) ?></span></label>
     <div class="control">
-        <input type="text" id="<?= $block->escapeHtmlAttr($block->getFieldId('custom_telephone')) ?>" name="<?= $block->escapeHtmlAttr($block->getFieldName('custom_telephone')) ?>" value="<?= $block->escapeHtmlAttr($block->getTelephone()) ?>" title="<?= $block->escapeHtmlAttr(__('Telephone')) ?>" class="input-text <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('custom_telephone')) ?>" <?php if ($block->isRequired()) echo ' data-validate="{required:true}"' ?>>
+        <input type="text" id="<?= $block->escapeHtmlAttr($block->getFieldId('custom_telephone')) ?>" name="<?= $block->escapeHtmlAttr($block->getFieldName('custom_telephone')) ?>" value="<?= $block->escapeHtmlAttr($block->getCustomTelephone()) ?>" title="<?= $block->escapeHtmlAttr(__('Telephone')) ?>" class="input-text <?= $block->escapeHtmlAttr($this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('custom_telephone')) ?>" <?php if ($block->isRequired()) echo ' data-validate="{required:true}"' ?>>
     </div>
 </div>
