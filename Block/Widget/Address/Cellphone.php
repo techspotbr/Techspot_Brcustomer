@@ -21,8 +21,11 @@
 
 namespace Techspot\Brcustomer\Block\Widget\Address;
 
+use Magento\Customer\Api\AddressMetadataInterface;
 use Magento\Customer\Api\CustomerMetadataInterface;
-
+use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Customer\Helper\Address as AddressHelper;
+use Magento\Customer\Model\Options;
 /**
  * Customer Value Added Rg Widget
  *
@@ -30,6 +33,17 @@ use Magento\Customer\Api\CustomerMetadataInterface;
  */
 class Cellphone extends AbstractWidget
 {   
+    /**
+     * @var AddressMetadataInterface
+     */
+    protected $addressMetadata;
+
+    /**
+     * @var Options
+     */
+    protected $options;
+
+
     /**
      * Constructor.
      *
@@ -40,11 +54,15 @@ class Cellphone extends AbstractWidget
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
-        \Magento\Customer\Helper\Address $addressHelper,
+        AddressHelper $addressHelper,
         CustomerMetadataInterface $customerMetadata,
+        Options $options,
+        AddressMetadataInterface $addressMetadata,
         array $data = []
     ) {
+        $this->options = $options;
         parent::__construct($context, $addressHelper, $customerMetadata, $data);
+        $this->addressMetadata = $addressMetadata;
         $this->_isScopePrivate = true;
     }
 
@@ -57,6 +75,31 @@ class Cellphone extends AbstractWidget
     {
         parent::_construct();
         $this->setTemplate('widget/address/cellphone.phtml');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function _getAttribute($attributeCode)
+    {
+        if ($this->getForceUseCustomerAttributes() || $this->getObject() instanceof CustomerInterface) {
+            return parent::_getAttribute($attributeCode);
+        }
+
+        try {
+            $attribute = $this->addressMetadata->getAttributeMetadata($attributeCode);
+        } catch (\Magento\Framework\Exception\NoSuchEntityException $e) {
+            return null;
+        }
+
+        if ($this->getForceUseCustomerRequiredAttributes() && $attribute && !$attribute->isRequired()) {
+            $customerAttribute = parent::_getAttribute($attributeCode);
+            if ($customerAttribute && $customerAttribute->isRequired()) {
+                $attribute = $customerAttribute;
+            }
+        }
+
+        return $attribute;
     }
 
     /**
